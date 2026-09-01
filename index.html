@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Eda</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Backgrounds */
+            --bg-primary: #080706;
+            --bg-secondary: #0D0B09;
+            --bg-callout: #12100E;
+            
+            /* Typography */
+            --text-primary: #F1E9DD;
+            --text-secondary: #AFA69B;
+            
+            /* Accents */
+            --accent-coffee: #C4A484;
+            --accent-espresso: #3D291F;
+            --accent-copper: #E8CBAF;
+            
+            --divider: rgba(241, 233, 221, 0.12);
+            
+            /* Fonts */
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: 'Geist', sans-serif;
+            
+            /* Animation */
+            --easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::selection {
+            background: var(--accent-coffee);
+            color: var(--bg-primary);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Subtle Noise Texture */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.02;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            background: rgba(8, 7, 6, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--divider);
+            transition: padding 0.4s var(--easing), background 0.4s var(--easing);
+        }
+
+        .header.scrolled {
+            background: rgba(8, 7, 6, 0.95);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: padding 0.4s var(--easing);
+        }
+
+        .header.scrolled .header-inner {
+            padding: 1rem 5vw;
+        }
+
+        .brand {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+        }
+
+        .btn-text {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            padding-bottom: 2px;
+            transition: color 0.3s var(--easing);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0%; height: 1px;
+            background: var(--accent-copper);
+            transition: width 0.3s var(--easing);
+        }
+        
+        .btn-text:hover {
+            color: var(--accent-copper);
+            transform: translateX(2px);
+        }
+        
+        .btn-text:hover::after {
+            width: 100%;
+        }
+
+        .mobile-progress-track {
+            display: none;
+            width: 100%;
+            height: 1px;
+            background: var(--divider);
+        }
+        
+        .mobile-progress-fill {
+            height: 100%;
+            background: var(--accent-copper);
+            width: 0%;
+            transform-origin: left;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 5vw;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80vw;
+            height: 80vw;
+            max-width: 1000px;
+            max-height: 1000px;
+            background: radial-gradient(circle, rgba(196, 164, 132, 0.08) 0%, rgba(196, 164, 132, 0.02) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        .hero-title {
+            font-family: var(--font-primary);
+            font-weight: 300;
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-primary);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 650px;
+            margin: 0 auto 3.5rem auto;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .meta-divider {
+            width: 30px;
+            height: 1px;
+            background: var(--accent-coffee);
+            opacity: 0.3;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.8;
+        }
+        
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--accent-coffee), transparent);
+            animation: scrollPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes scrollPulse {
+            0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+            50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+            50.1% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+            100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+        }
+
+        .hero .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .hero .reveal:nth-child(2) { transition-delay: 0.3s; }
+        .hero .reveal:nth-child(3) { transition-delay: 0.5s; }
+
+        /* Layout */
+        .layout-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 8rem;
+            padding: 0 5vw 8rem;
+        }
+
+        /* TOC */
+        .toc-sidebar {
+            position: sticky;
+            top: 140px;
+            height: max-content;
+            display: flex;
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        .toc-progress-track {
+            width: 1px;
+            background: var(--divider);
+            position: relative;
+        }
+
+        .toc-progress-fill {
+            width: 1px;
+            background: var(--accent-copper);
+            position: absolute;
+            top: 0; left: 0;
+            height: 0%;
+        }
+
+        .toc {
+            flex-grow: 1;
+        }
+
+        .toc-header-desktop {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            opacity: 0.6;
+        }
+
+        .toc-mobile-toggle {
+            display: none;
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: left;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            cursor: pointer;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .toc-mobile-toggle:focus-visible {
+            color: var(--accent-copper);
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s var(--easing);
+            display: flex;
+            align-items: center;
+        }
+        
+        .toc-mobile-toggle[aria-expanded="true"] .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .toc-content {
+            display: grid;
+            grid-template-rows: 1fr;
+            transition: grid-template-rows 0.4s var(--easing);
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            overflow: hidden;
+        }
+
+        .toc-link {
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 0.6rem 0;
+            font-size: 0.85rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .toc-link-num {
+            font-family: var(--font-primary);
+            font-size: 0.8rem;
+            opacity: 0.4;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        .toc-link:hover, .toc-link:focus-visible {
+            color: var(--text-primary);
+            outline: none;
+            transform: translateX(4px);
+        }
+
+        .toc-link:hover .toc-link-num {
+            opacity: 0.8;
+        }
+
+        .toc-link.active {
+            color: var(--accent-copper);
+            transform: translateX(4px);
+        }
+        
+        .toc-link.active .toc-link-num {
+            opacity: 1;
+            color: var(--accent-copper);
+        }
+
+        /* Article */
+        .article {
+            max-width: 720px;
+        }
+
+        .policy-section {
+            margin-bottom: 6rem;
+            scroll-margin-top: 140px;
+        }
+
+        .spacer-section {
+            margin-top: 8rem;
+            margin-bottom: 8rem;
+        }
+
+        .section-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-copper);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-primary);
+            font-weight: 300;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .section-content {
+            color: var(--text-secondary);
+        }
+
+        .section-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-content strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .section-content a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-coffee);
+            transition: color 0.3s var(--easing), border-color 0.3s var(--easing);
+        }
+
+        .section-content a:hover {
+            color: var(--accent-copper);
+            border-color: var(--accent-copper);
+        }
+
+        /* Lists */
+        .editorial-list {
+            list-style: none;
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .editorial-list li {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .list-title {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .list-body {
+            color: var(--text-secondary);
+        }
+
+        .list-why {
+            font-size: 0.9rem;
+            color: var(--accent-copper);
+            background: rgba(111, 74, 53, 0.05);
+            padding: 1rem 1.25rem;
+            border-left: 1px solid var(--accent-espresso);
+            margin-top: 0.5rem;
+        }
+
+        .nested-list {
+            list-style: none;
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .nested-list li {
+            position: relative;
+        }
+
+        .nested-list li::before {
+            content: '—';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent-coffee);
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-top: 1.5rem;
+            padding-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .bullet-list li {
+            position: relative;
+        }
+        
+        .bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: -1.5rem;
+            color: var(--accent-copper);
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--bg-callout);
+            border: 1px solid var(--accent-espresso);
+            border-radius: 0;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .callout-title {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .callout-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Reach Us Grid */
+        .reach-us-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--accent-espresso);
+        }
+
+        @media (min-width: 768px) {
+            .reach-us-grid {
+                grid-template-columns: 1.5fr 1fr;
+                align-items: center;
+                gap: 4rem;
+            }
+        }
+
+        .reach-us-title {
+            font-family: var(--font-primary);
+            font-weight: 300;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .reach-us-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 400px;
+        }
+
+        .reach-us-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            padding: 1.25rem 1.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 0;
+            text-decoration: none;
+            transition: all 0.4s var(--easing);
+        }
+
+        .btn-primary:hover {
+            transform: translateX(4px);
+            background: var(--accent-copper);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--accent-coffee);
+            padding: 1.25rem 1.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 0;
+            text-decoration: none;
+            transition: all 0.4s var(--easing);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-coffee);
+            color: var(--bg-primary);
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--divider);
+            padding: 8rem 5vw 4rem;
+            background: var(--bg-secondary);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-statement {
+            font-family: var(--font-primary);
+            font-weight: 300;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-col {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .footer-col.right {
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s var(--easing);
+        }
+
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+
+        .back-to-top {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-secondary);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            transition: color 0.3s var(--easing);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-top:hover {
+            color: var(--accent-copper);
+            transform: translateY(-2px);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s var(--easing), transform 1s var(--easing);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            .hero-glow, .btn-text:hover, .back-to-top:hover {
+                transform: none !important;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1023px) {
+            .title { display: none; }
+            
+            .layout-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .toc-sidebar {
+                top: 64px;
+                background: rgba(8, 7, 6, 0.95);
+                backdrop-filter: blur(12px);
+                margin: 0 -5vw;
+                padding: 0 5vw;
+                border-bottom: 1px solid var(--divider);
+                z-index: 40;
+                align-items: flex-start;
+            }
+            
+            .toc-progress-track, .toc-header-desktop {
+                display: none;
+            }
+            
+            .toc-mobile-toggle {
+                display: flex;
+            }
+            
+            .toc-content {
+                grid-template-rows: 0fr;
+                padding-bottom: 0;
+            }
+            
+            .toc-content.expanded {
+                grid-template-rows: 1fr;
+                padding-bottom: 1.5rem;
+            }
+            
+            .mobile-progress-track {
+                display: block;
+                position: absolute;
+                bottom: -1px; left: 0;
+            }
+            
+            .article {
+                max-width: 100%;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 4rem;
+            }
+            
+            .footer-col {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            
+            .footer-col.right {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 100svh;
+            }
+            .hero-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .policy-section {
+                margin-bottom: 4.5rem;
+            }
+            .callout {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="brand">Eda <span style="font-weight: 300; opacity: 0.5; margin: 0 0.4rem; font-family: var(--font-secondary); font-size: 0.9rem;">&times;</span> Dominion</div>
+            <div class="title" style="margin-left: auto;">Privacy Policy</div>
+        </div>
+        <div class="mobile-progress-track">
+            <div class="mobile-progress-fill" id="mobile-progress"></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <h1 class="hero-title reveal">Privacy, Explained.</h1>
+            <p class="hero-subtitle reveal">How we collect, use, protect, and respect your information.</p>
+            <div class="hero-meta reveal">
+                <span>Privacy Policy</span>
+                <span class="meta-divider"></span>
+                <span>Last updated &mdash; September 2026</span>
+            </div>
+        </div>
+        <div class="scroll-indicator reveal" style="transition-delay: 0.7s;">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <div class="layout-container">
+        <aside class="toc-sidebar">
+            <div class="toc-progress-track">
+                <div class="toc-progress-fill" id="toc-progress"></div>
+            </div>
+            <nav class="toc" id="toc" aria-label="Table of Contents">
+                <div class="toc-header-desktop">On this page</div>
+                <button class="toc-mobile-toggle" aria-expanded="false" id="toc-toggle">
+                    <span class="toc-mobile-label">On this page</span>
+                    <span class="toggle-icon">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="toc-content" id="toc-content">
+                    <ul class="toc-list" id="toc-list">
+                        <li><a href="#section-01" class="toc-link"><span class="toc-link-num">01</span><span class="toc-link-text">What Data We Collect</span></a></li>
+                        <li><a href="#section-02" class="toc-link"><span class="toc-link-num">02</span><span class="toc-link-text">Legal Basis</span></a></li>
+                        <li><a href="#section-03" class="toc-link"><span class="toc-link-num">03</span><span class="toc-link-text">Data Retention</span></a></li>
+                        <li><a href="#section-04" class="toc-link"><span class="toc-link-num">04</span><span class="toc-link-text">Requesting Deletion</span></a></li>
+                        <li><a href="#section-05" class="toc-link"><span class="toc-link-num">05</span><span class="toc-link-text">Bot Removal</span></a></li>
+                        <li><a href="#section-06" class="toc-link"><span class="toc-link-num">06</span><span class="toc-link-text">Security Measures</span></a></li>
+                        <li><a href="#section-07" class="toc-link"><span class="toc-link-num">07</span><span class="toc-link-text">Children's Privacy</span></a></li>
+                        <li><a href="#section-08" class="toc-link"><span class="toc-link-num">08</span><span class="toc-link-text">Third-Party &amp; AI</span></a></li>
+                        <li><a href="#section-09" class="toc-link"><span class="toc-link-num">09</span><span class="toc-link-text">Changes to Policy</span></a></li>
+                        <li><a href="#section-10" class="toc-link"><span class="toc-link-num">10</span><span class="toc-link-text">Contact</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="article">
+            
+            <section id="section-01" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 01</div>
+                <h2 class="section-title reveal">What Data We Collect and Why</h2>
+                <div class="section-content reveal">
+                    <p>We collect only the specific data necessary to provide effective moderation, security, and management features to server administrators. We do not collect data for tracking or advertising purposes.</p>
+                    
+                    <ul class="editorial-list">
+                        <li>
+                            <span class="list-title">Discord Account Information</span>
+                            <span class="list-body">We collect User IDs, usernames, display names, and role IDs.</span>
+                            <span class="list-why"><em>Why:</em> To verify staff permissions, apply moderation actions, and manage "sticky roles" (automatically restoring a user's roles if they leave and rejoin the server).</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Message Content (Strictly Limited)</span>
+                            <span class="list-body">We <strong>do not</strong> perform bulk logging or monitor normal conversations. Message content is only collected and stored when a message triggers a security or moderation protocol:
+                                <ul class="nested-list">
+                                    <li><em>AutoMod:</em> Messages that trigger spam, phishing, or word blacklist filters.</li>
+                                    <li><em>Honeypots:</em> Messages sent by malicious actors or bots in designated, hidden honeypot channels.</li>
+                                    <li><em>Audit Trails:</em> The text of edited or deleted messages is temporarily cached to provide staff with a reliable moderation audit trail.</li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="list-title">Moderation Case Data</span>
+                            <span class="list-body">We log warnings, mutes, kicks, and bans, along with the reason, timestamp, and the Discord ID of the staff member who issued the action.</span>
+                            <span class="list-why"><em>Why:</em> To provide server administrators with an accurate historical record of rule enforcement.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="section-02" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 02</div>
+                <h2 class="section-title reveal">Legal Basis for Collection</h2>
+                <div class="section-content reveal">
+                    <div class="callout">
+                        <div class="callout-title">At a glance</div>
+                        <div class="callout-content">
+                            We collect and process this data under the legal basis of <strong>legitimate interest</strong>. Our legitimate interest is to provide robust security, moderation, and community management services to the Discord server administrators who elect to install Eda.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-03" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 03</div>
+                <h2 class="section-title reveal">Data Retention</h2>
+                <div class="section-content reveal">
+                    <p>We keep data only as long as necessary to fulfill the purposes outlined above:</p>
+                    <ul class="editorial-list">
+                        <li>
+                            <span class="list-title">Moderation Case Logs &amp; Sticky Roles</span>
+                            <span class="list-body">Retained indefinitely by default to ensure an accurate historical audit trail and prevent users from bypassing punishments by leaving and rejoining.</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Message Content Logs</span>
+                            <span class="list-body">Edited and deleted messages are retained temporarily for the staff audit trail and purged automatically after <strong>30 days</strong>.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="section-04" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 04</div>
+                <h2 class="section-title reveal">Requesting Data Deletion</h2>
+                <div class="section-content reveal">
+                    <p>Users have the right to request the deletion of their stored data.</p>
+                    <p>To request deletion, you may contact the administrators of the server where the action occurred, or email the Operator directly at <a href="mailto:support@domcord.org">support@domcord.org</a>. We will process verified deletion requests within <strong>30 days</strong>.</p>
+                    
+                    <div class="callout">
+                        <div class="callout-title">Note</div>
+                        <div class="callout-content">
+                            We reserve the right to retain certain moderation records (such as active bans or severe security threat logs) if necessary to protect the safety and integrity of the server.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-05" class="policy-section spacer-section">
+                <div class="section-meta reveal">LEGAL / 05</div>
+                <h2 class="section-title reveal">What Happens When the Bot is Removed</h2>
+                <div class="section-content reveal">
+                    <p>If Eda is removed (kicked) from a Discord server, all server-specific configuration data, audit logs, and member tracking histories associated with that server will be permanently deleted from our database within <strong>30 days</strong>, except where the server administrator explicitly requests temporary retention for legal or severe security reasons.</p>
+                </div>
+            </section>
+
+            <section id="section-06" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 06</div>
+                <h2 class="section-title reveal">Security Measures</h2>
+                <div class="section-content reveal">
+                    <p>Your data is secure. Eda is self-hosted on the Operator's own private server infrastructure. All data is stored locally in an isolated SQLite database.</p>
+                    <ul class="bullet-list">
+                        <li>We <strong>do not</strong> use third-party cloud database providers.</li>
+                        <li>We <strong>do not</strong> use third-party data processors.</li>
+                        <li>Access to the server and database is strictly restricted to authorized operators.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="section-07" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 07</div>
+                <h2 class="section-title reveal">Children's Privacy</h2>
+                <div class="section-content reveal">
+                    <p>Eda operates exclusively on the Discord platform, which requires users to be at least 13 years old. Eda is not directed at children under 13, and we do not knowingly collect personal information from anyone under 13.</p>
+                </div>
+            </section>
+
+            <section id="section-08" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 08</div>
+                <h2 class="section-title reveal">Third-Party Sharing &amp; AI Training</h2>
+                <div class="section-content reveal">
+                    <ul class="editorial-list">
+                        <li>
+                            <span class="list-title">No Third-Party Sharing</span>
+                            <span class="list-body">We do not sell, rent, or share any collected data with third parties. All processing occurs strictly "on-platform" (between Discord's API and our local database).</span>
+                        </li>
+                        <li>
+                            <span class="list-title">No AI Training</span>
+                            <span class="list-body">Absolutely no message content or user data is used to train Artificial Intelligence or Machine Learning models.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="section-09" class="policy-section">
+                <div class="section-meta reveal">LEGAL / 09</div>
+                <h2 class="section-title reveal">Changes to this Policy</h2>
+                <div class="section-content reveal">
+                    <p>We may update this Privacy Policy from time to time. Updates will be communicated via official announcements in our primary support server or through direct updates to this hosted document. Continued use of Eda after changes are published constitutes your acceptance of the revised policy.</p>
+                </div>
+            </section>
+
+            <section id="section-10" class="policy-section spacer-section">
+                <div class="reach-us-grid reveal">
+                    <div class="reach-us-text">
+                        <h2 class="reach-us-title">Get in touch.</h2>
+                        <p class="reach-us-desc">For privacy inquiries, questions about this policy, or to submit a data deletion request, contact the Dominion operator directly.</p>
+                    </div>
+                    <div class="reach-us-actions">
+                        <a href="mailto:support@domcord.org" class="btn-primary">
+                            <span>Email Support</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                        <a href="https://discord.gg/domcord" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+                            <span>Join Discord</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <h2 class="footer-statement reveal">Your privacy matters.</h2>
+            <div class="footer-links reveal">
+                <div class="footer-col">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="mailto:support@domcord.org">Contact</a>
+                </div>
+                <div class="footer-col right">
+                    <button class="back-to-top" id="back-to-top">Back to top <span>&uarr;</span></button>
+                    <div class="copyright">&copy; 2026 Eda Bot</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for scroll reveals
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            // Respect prefers-reduced-motion
+            const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (!mediaQuery.matches) {
+                const revealObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, revealOptions);
+
+                reveals.forEach(el => revealObserver.observe(el));
+            } else {
+                reveals.forEach(el => el.classList.add('active'));
+            }
+
+            // Intersection Observer for TOC active states
+            const sections = document.querySelectorAll('.policy-section');
+            const tocLinks = document.querySelectorAll('.toc-link');
+
+            const tocObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        tocLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-20% 0px -75% 0px' });
+
+            sections.forEach(section => tocObserver.observe(section));
+
+            // Scroll Progress and Header states
+            const header = document.getElementById('header');
+            const mobileProgress = document.getElementById('mobile-progress');
+            const tocProgress = document.getElementById('toc-progress');
+
+            const updateScroll = () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                
+                if (mobileProgress) mobileProgress.style.width = scrolled + '%';
+                if (tocProgress) tocProgress.style.height = scrolled + '%';
+            };
+
+            window.addEventListener('scroll', updateScroll, { passive: true });
+            updateScroll(); // init
+
+            // Mobile TOC toggle
+            const tocToggle = document.getElementById('toc-toggle');
+            const tocContent = document.getElementById('toc-content');
+            
+            if (tocToggle) {
+                tocToggle.addEventListener('click', () => {
+                    const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+                    tocToggle.setAttribute('aria-expanded', !isExpanded);
+                    tocContent.classList.toggle('expanded');
+                });
+            }
+
+            // Close Mobile TOC on link click
+            tocLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1023 && tocToggle) {
+                        tocToggle.setAttribute('aria-expanded', 'false');
+                        tocContent.classList.remove('expanded');
+                    }
+                });
+            });
+
+            // Back to top
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
