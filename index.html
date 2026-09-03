@@ -848,10 +848,10 @@
                 </button>
                 <div class="toc-content" id="toc-content">
                     <ul class="toc-list" id="toc-list">
-                        <li><a href="#section-01" class="toc-link"><span class="toc-link-num">01</span><span class="toc-link-text">Data Collection</span></a></li>
+                        <li><a href="#section-01" class="toc-link"><span class="toc-link-num">01</span><span class="toc-link-text">Comprehensive Data Collection</span></a></li>
                         <li><a href="#section-02" class="toc-link"><span class="toc-link-num">02</span><span class="toc-link-text">Exemptions</span></a></li>
                         <li><a href="#section-03" class="toc-link"><span class="toc-link-num">03</span><span class="toc-link-text">Data Retention</span></a></li>
-                        <li><a href="#section-04" class="toc-link"><span class="toc-link-num">04</span><span class="toc-link-text">No Data Sharing</span></a></li>
+                        <li><a href="#section-04" class="toc-link"><span class="toc-link-num">04</span><span class="toc-link-text">Security &amp; No Sharing</span></a></li>
                         <li><a href="#section-05" class="toc-link"><span class="toc-link-num">05</span><span class="toc-link-text">Contact</span></a></li>
                     </ul>
                 </div>
@@ -862,22 +862,23 @@
             
             <section id="section-01" class="policy-section">
                 <div class="section-meta reveal">LEGAL / 01</div>
-                <h2 class="section-title reveal">Data Collection &amp; Purpose</h2>
+                <h2 class="section-title reveal">Comprehensive Data Collection &amp; Purpose</h2>
                 <div class="section-content reveal">
-                    <p>Eda operates under a strict data-minimization framework (Discord Developer Policy 15). We only collect data strictly necessary for server moderation, security, and utility functions:</p>
+                    <p>Eda operates under a strict data-minimization framework in compliance with Discord Developer Policy 15. We explicitly avoid broad surveillance or bulk logging of casual conversations. We only collect and process data that is strictly necessary for server moderation, security, and utility functions:</p>
                     
                     <ul class="editorial-list">
                         <li>
                             <span class="list-title">Message Caching for Audit Logs</span>
-                            <span class="list-body">To reliably provide deleted and edited message tracking for moderators, Eda temporarily caches message content (text and attachment URLs) in RAM, with a temporary SQLite database fallback. This allows moderation logs to capture original messages before they are deleted by users or AutoMod. <strong>Once an audited event is forwarded to our secure internal log channels by Eda, it remains there as a permanent Discord message for moderation record-keeping.</strong></span>
+                            <span class="list-body">To reliably provide deleted and edited message tracking for moderators, Eda temporarily caches message content (including text, timestamps, and attachment URLs) in RAM, utilizing a temporary, isolated SQLite database fallback. This localized caching ensures that moderation logs accurately capture original messages before they are permanently deleted by users or AutoMod filters. 
+                                <br><br><em>Note:</em> <strong>Once an audited event (like a flagged edit or deletion) is securely forwarded to our internal staff log channels by Eda, it remains there as a permanent Discord message for formal moderation record-keeping.</strong></span>
                         </li>
                         <li>
                             <span class="list-title">Ticket Transcripts</span>
-                            <span class="list-body">When a user utilizes the Ticket System, the conversation within the ticket thread is compiled into a transcript upon closing for record-keeping and moderation review. Users are explicitly notified of this transcription process upon opening a ticket.</span>
+                            <span class="list-body">When a user utilizes the internal Ticket System to contact staff, the conversation within the isolated ticket thread is compiled into a secure transcript upon closing. This transcript is securely stored for administrative record-keeping, quality assurance, and moderation review. Users are explicitly notified of this transcription process immediately upon opening a ticket.</span>
                         </li>
                         <li>
-                            <span class="list-title">Moderation History</span>
-                            <span class="list-body">Warns, bans, timeouts, and other infractions are permanently stored in the database, linked to your Discord User ID, to maintain a historical moderation record.</span>
+                            <span class="list-title">Moderation History &amp; Member Tracking</span>
+                            <span class="list-body">Official infractions (warns, mutes, kicks, bans, and timeouts) are permanently stored in our secure database. This data is strictly linked to your public Discord User ID to maintain an accurate historical moderation record. We also log role states to enforce "sticky roles" (automatically restoring a user's roles if they attempt to bypass a punishment by leaving and rejoining the server).</span>
                         </li>
                     </ul>
                 </div>
@@ -885,16 +886,13 @@
 
             <section id="section-02" class="policy-section">
                 <div class="section-meta reveal">LEGAL / 02</div>
-                <h2 class="section-title reveal">Exemptions &amp; Sovereign Privacy</h2>
+                <h2 class="section-title reveal">Exemptions &amp; Dropped Data</h2>
                 <div class="section-content reveal">
+                    <p>To further minimize our data footprint, certain data is explicitly dropped before processing:</p>
                     <ul class="editorial-list">
                         <li>
-                            <span class="list-title">Sovereign Channels</span>
-                            <span class="list-body">Specifically designated "sovereign" channels are explicitly exempted from ALL data collection. Eda will not read, cache, or log voice or text activity in these channels.</span>
-                        </li>
-                        <li>
                             <span class="list-title">Bot Clutter</span>
-                            <span class="list-body">Messages from designated automated bots are dropped entirely before caching and never enter our databases.</span>
+                            <span class="list-body">Messages generated by designated automated bots, webhooks, or system integrations are dropped entirely before the caching phase and never enter our localized databases or memory streams.</span>
                         </li>
                     </ul>
                 </div>
@@ -902,30 +900,31 @@
 
             <section id="section-03" class="policy-section">
                 <div class="section-meta reveal">LEGAL / 03</div>
-                <h2 class="section-title reveal">Data Retention &amp; Deletion Rights</h2>
+                <h2 class="section-title reveal">Strict Data Retention &amp; Deletion Rights</h2>
                 <div class="section-content reveal">
+                    <p>We do not hold your data hostage. We adhere to strict retention schedules based on the utility and security requirements of the server:</p>
                     <ul class="editorial-list">
                         <li>
                             <span class="list-title">Caching Purge Schedule</span>
-                            <span class="list-body">Cached message content retained for edit/delete tracking is automatically purged from our temporary database after <strong>14 days</strong>.</span>
+                            <span class="list-body">Cached message content retained solely for edit/delete tracking is automatically and permanently purged from our temporary SQLite database after a maximum of <strong>14 days</strong>.</span>
                         </li>
                         <li>
                             <span class="list-title">Log Channel Retention</span>
-                            <span class="list-body">Messages forwarded by Eda into internal staff log channels (like edit/delete alert feeds) act as official server security records and are kept indefinitely by Discord unless manually deleted by an administrator.</span>
+                            <span class="list-body">Messages actively flagged and forwarded by Eda into internal staff log channels (e.g., edit/delete alert feeds, AutoMod triggers) act as official server security records. These are kept indefinitely within Discord's infrastructure unless manually deleted by a Dominion administrator.</span>
                         </li>
                         <li>
-                            <span class="list-title">Your Right to Deletion (GDPR/CCPA)</span>
-                            <span class="list-body">You have the right to request the immediate deletion of your temporarily cached message data from our database. You can trigger this at any time by using the <strong><code>/request-deletion</code></strong> command in the server.</span>
+                            <span class="list-title">Your Right to Deletion (GDPR/CCPA compliant)</span>
+                            <span class="list-body">You have the right to request the immediate deletion of your temporarily cached message data from our local database. You can trigger this at any time by executing the <strong><code>/request-deletion</code></strong> command within the server.</span>
                             
                             <ul class="nested-list">
-                                <li>Using this command forwards a formal, interactive card to our Watchtower administrators.</li>
-                                <li>Administrators will review and click an "Approve" button to securely execute the deletion of your cached chat logs from our storage.</li>
+                                <li>Using this command forwards a formal, interactive request card to our Watchtower administrators.</li>
+                                <li>Administrators will review and click an "Approve" button to securely execute the purge of your cached chat logs from our localized storage.</li>
                             </ul>
                             
                             <div class="callout" style="margin-top: 1.5rem;">
-                                <div class="callout-title">Note</div>
+                                <div class="callout-title">Critical Exemption</div>
                                 <div class="callout-content">
-                                    Official moderation infractions such as bans or formal warnings are retained for security purposes under legitimate interest and cannot be purged via this command.
+                                    Official moderation infractions—such as bans, formal warnings, or severe security logs—are retained for critical security purposes under legitimate interest and cannot be purged via this automated command.
                                 </div>
                             </div>
                         </li>
@@ -935,9 +934,23 @@
 
             <section id="section-04" class="policy-section">
                 <div class="section-meta reveal">LEGAL / 04</div>
-                <h2 class="section-title reveal">No Data Sharing or Commercialization</h2>
+                <h2 class="section-title reveal">Security Measures &amp; No Data Sharing</h2>
                 <div class="section-content reveal">
-                    <p>We <strong>do not</strong> sell, license, share, or disclose your API Data to data brokers, advertising networks, or any third-party processors. All data is stored locally on the secure host server running Eda. We <strong>do not</strong> use message content to train machine learning or AI models.</p>
+                    <p>Your data remains strictly within our ecosystem.</p>
+                    <ul class="editorial-list">
+                        <li>
+                            <span class="list-title">Zero Third-Party Commercialization</span>
+                            <span class="list-body">We <strong>do not</strong> sell, license, share, or disclose your API Data, message content, or metadata to data brokers, advertising networks, or any third-party processors.</span>
+                        </li>
+                        <li>
+                            <span class="list-title">No AI Training</span>
+                            <span class="list-body">Absolutely no message content, user data, or behavioral metadata is extracted or used to train machine learning models, generative AI, or language models.</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Infrastructure Security</span>
+                            <span class="list-body">All processed data is stored locally on the Operator's isolated, self-hosted server infrastructure utilizing a secure SQLite database. We do not rely on third-party cloud database providers (like AWS or MongoDB Atlas), significantly reducing the attack surface. Access to the host server is strictly restricted to authorized Dominion operators.</span>
+                        </li>
+                    </ul>
                 </div>
             </section>
 
@@ -945,12 +958,15 @@
                 <div class="reach-us-grid reveal">
                     <div class="reach-us-text">
                         <h2 class="reach-us-title">Get in touch.</h2>
-                        <p class="reach-us-desc">If you have questions about this policy or need to issue a manual data request, please contact the server ownership team directly or open an administrative ticket in the Dominion Discord server.</p>
+                        <p class="reach-us-desc">If you have extensive questions about this policy, require further clarification on our data processing methods, or need to issue a manual data deletion request that bypasses the automated command, please reach out to us.</p>
                     </div>
                     <div class="reach-us-actions">
-                        <a href="https://discord.gg/domcord" class="btn-primary" target="_blank" rel="noopener noreferrer">
-                            <span>Join Discord</span>
+                        <a href="mailto:support@domcord.org" class="btn-primary">
+                            <span>Email Support</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                        <a href="https://discord.gg/domcord" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+                            <span>Join Discord</span>
                         </a>
                     </div>
                 </div>
