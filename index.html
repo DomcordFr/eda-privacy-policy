@@ -768,14 +768,14 @@
             }
             
             .toc-sidebar {
-                top: 64px;
+                top: 58px;
                 background: rgba(5, 5, 5, 0.95);
                 backdrop-filter: blur(12px);
                 margin: 0 -5vw;
-                padding: 0 5vw;
+                padding: 1rem 5vw;
                 border-bottom: 1px solid var(--divider);
                 z-index: 40;
-                align-items: flex-start;
+                align-items: center;
             }
             
             .toc-progress-track, .toc-header-desktop {
@@ -784,16 +784,25 @@
             
             .toc-mobile-toggle {
                 display: flex;
+                padding: 0;
+                line-height: 1;
+            }
+            
+            .toc-mobile-label {
+                line-height: 1;
+                margin-top: 2px;
             }
             
             .toc-content {
                 grid-template-rows: 0fr;
                 padding-bottom: 0;
+                margin-top: 0;
             }
             
             .toc-content.expanded {
                 grid-template-rows: 1fr;
-                padding-bottom: 1.5rem;
+                padding-bottom: 0.5rem;
+                margin-top: 1.5rem;
             }
             
             .mobile-progress-track {
