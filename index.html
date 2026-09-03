@@ -1165,12 +1165,24 @@
                 });
             }
 
-            // Close Mobile TOC on link click
+            // Close Mobile TOC and smooth scroll on link click
             tocLinks.forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
                     if (window.innerWidth <= 1023 && tocToggle) {
                         tocToggle.setAttribute('aria-expanded', 'false');
                         tocContent.classList.remove('expanded');
+                    }
+                    
+                    if (targetSection) {
+                        // Wait for the menu closing reflow to finish before scrolling
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }, 100); // slightly longer to ensure smooth CSS transition completion
                     }
                 });
             });
