@@ -390,17 +390,25 @@
 
         /* Article */
         .article {
-            max-width: 720px;
+            width: 100%;
         }
 
         .policy-section {
             margin-bottom: 6rem;
-            scroll-margin-top: 140px;
+            padding-top: 5rem;
+            border-top: 1px solid var(--divider);
+            scroll-margin-top: 120px;
+        }
+
+        .policy-section:first-child {
+            border-top: none;
+            padding-top: 0;
         }
 
         .spacer-section {
             margin-top: 8rem;
             margin-bottom: 8rem;
+            border-top: none;
         }
 
         .section-meta {
@@ -414,14 +422,46 @@
         .section-title {
             font-family: var(--font-primary);
             font-weight: 300;
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.2;
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
             color: var(--text-primary);
         }
 
         .section-content {
             color: var(--text-secondary);
+            max-width: 760px;
+        }
+
+        @media (min-width: 1024px) {
+            .policy-section {
+                display: grid;
+                grid-template-columns: 1fr 2.2fr;
+                grid-template-areas: 
+                    "meta content"
+                    "title content";
+                gap: 0 5rem;
+                align-items: start;
+            }
+            .section-meta { 
+                grid-area: meta; 
+                margin-bottom: 2rem; 
+            }
+            .section-title { 
+                grid-area: title; 
+                margin-bottom: 0; 
+                position: sticky;
+                top: 140px;
+                padding-bottom: 2rem;
+            }
+            .section-content { 
+                grid-area: content; 
+            }
+            
+            /* The last section "reach us" doesn't need to follow the meta/title/content grid since it's a spacer */
+            .spacer-section {
+                display: block;
+            }
         }
 
         .section-content p {
