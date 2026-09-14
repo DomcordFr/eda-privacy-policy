@@ -940,11 +940,15 @@
                         </li>
                         <li>
                             <span class="list-title">Ticket Transcripts</span>
-                            <span class="list-body">When a user utilizes the internal Ticket System to contact staff, the conversation within the isolated ticket thread is compiled into a secure transcript upon closing. This transcript is securely stored for administrative record-keeping, quality assurance, and moderation review. Users are explicitly notified of this transcription process immediately upon opening a ticket.</span>
+                            <span class="list-body">When a user utilizes the internal Ticket System to contact staff, the conversation within the isolated ticket thread is compiled into a secure transcript upon closing. This transcript is securely stored and retained indefinitely for administrative record-keeping, dispute resolution, quality assurance, and moderation review unless deletion is requested by the user or server administrators. Users are explicitly notified of this transcription process immediately upon opening a ticket.</span>
                         </li>
                         <li>
                             <span class="list-title">Moderation History &amp; Member Tracking</span>
-                            <span class="list-body">Official infractions (warns, mutes, kicks, bans, and timeouts) are permanently stored in our secure database. This data is strictly linked to your public Discord User ID to maintain an accurate historical moderation record. We also log role states to enforce "sticky roles" (automatically restoring a user's roles if they attempt to bypass a punishment by leaving and rejoining the server).</span>
+                            <span class="list-body">Official infractions (warns, mutes, kicks, bans, and timeouts) are permanently stored in our secure database. This data is strictly linked to your public Discord User ID to maintain an accurate historical moderation record. Permanent retention is required under our legitimate interest to maintain an accurate cross-session moderation history, enforce server rules, and prevent repeat-offender ban evasion. We also log role states to enforce "sticky roles" (automatically restoring a user's roles if they attempt to bypass a punishment by leaving and rejoining the server).</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Verification &amp; Quarantine Processing</span>
+                            <span class="list-body">On server join, we evaluate member eligibility against verification criteria. Members who do not meet the threshold are temporarily assigned a quarantine role pending review. Join-event member data is processed in real time and not stored beyond what is necessary for role assignment and security screening.</span>
                         </li>
                     </ul>
                 </div>
@@ -976,11 +980,15 @@
                 <div class="section-meta reveal">LEGAL / 04</div>
                 <h2 class="section-title reveal">Strict Data Retention &amp; Deletion Rights</h2>
                 <div class="section-content reveal">
-                    <p>We do not hold your data hostage. We adhere to strict retention schedules based on the utility and security requirements of the server:</p>
+                    <p>We adhere to strict retention schedules based on operational necessity and the security requirements of the server:</p>
                     <ul class="editorial-list">
                         <li>
                             <span class="list-title">Caching Purge Schedule</span>
                             <span class="list-body">Cached message content retained solely for edit/delete tracking is automatically and permanently purged from our temporary SQLite database after a maximum of <strong>14 days</strong>.</span>
+                        </li>
+                        <li>
+                            <span class="list-title">Ticket Transcript Retention</span>
+                            <span class="list-body">Closed ticket transcripts are retained indefinitely for administrative record-keeping, user dispute resolution, and security auditing, unless manual deletion is requested via ticket or support inquiry.</span>
                         </li>
                         <li>
                             <span class="list-title">Log Channel Retention</span>
@@ -996,9 +1004,9 @@
                             </ul>
                             
                             <div class="callout" style="margin-top: 1.5rem;">
-                                <div class="callout-title">Critical Exemption</div>
+                                <div class="callout-title">Deletion Scope &amp; Exemption</div>
                                 <div class="callout-content">
-                                    Official moderation infractions—such as bans, formal warnings, or severe security logs—are retained for critical security purposes under legitimate interest and cannot be purged via this automated command.
+                                    The <code>/request-deletion</code> command purges your cached message content and temporary chat logs from local SQLite storage only. Formal moderation records (warns, mutes, kicks, bans, timeouts, and associated case logs) are retained regardless of this request to preserve historical server security and prevent repeat-offender evasion under our legitimate interest.
                                 </div>
                             </div>
                         </li>
